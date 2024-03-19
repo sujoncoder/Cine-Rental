@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React from "react";
+import { getImageUrl } from "../utils/cine-utility";
 
 const MovieDetailsModal = ({ movie, onClose }) => {
   return (
@@ -9,7 +10,7 @@ const MovieDetailsModal = ({ movie, onClose }) => {
         <div className="bg-white shadow-md dark:bg-[#12141D] rounded-2xl sm:grid sm:grid-cols-[2fr_1fr] overflow-hidden">
           <img
             className="sm:order-2 w-full object-cover h-full max-sm:max-h-[300px]"
-            src="./assets/movie-1.png"
+            src={getImageUrl(movie.cover)}
             alt=""
           />
           <div className="p-5 lg:p-11">

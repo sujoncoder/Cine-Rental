@@ -16,7 +16,7 @@ const MovieCard = ({ movie }) => {
   };
 
   // handle open modal
-  const handleSelectMovie = () => {
+  const handleSelectMovie = (movie) => {
     setSelectedMovie(movie);
     setShowModal(true);
   };
