@@ -38,13 +38,19 @@ const MovieCard = ({ movie }) => {
     if (!found) {
       setCartData([...cartData, movie]);
     } else {
-      console.error(`The movie ${movie.title} has been added to the cart`);
+      alert(`OPPS  ${movie.title} is already added.`);
     }
+
+    alert("Wow movie added SUCCESSFUL");
   };
   return (
     <>
       {showModal && (
-        <MovieDetailsModal movie={selectedMovie} onClose={handleModalClose} />
+        <MovieDetailsModal
+          movie={selectedMovie}
+          onClose={handleModalClose}
+          onAddCart={addToCartMovie}
+        />
       )}
       {/* or  */}
 

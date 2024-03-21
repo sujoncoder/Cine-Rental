@@ -1,16 +1,17 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext, useState } from "react";
 import Moon from "./assets/icons/moon.svg";
+import Sun from "./assets/icons/sun.svg";
 import Logo from "./assets/logo.svg";
 import Ring from "./assets/ring.svg";
 import Cart from "./assets/shopping-cart.svg";
 import CartDetails from "./cine/CartDetails";
-import { MovieContext } from "./context";
+import { MovieContext, ThemeContext } from "./context";
 
 const Header = () => {
   const [showDetails, setShowDetails] = useState(false);
   const { cartData } = useContext(MovieContext);
-  console.log(cartData);
+  const { darkMode, setDarkMode } = useContext(ThemeContext);
 
   // handle show cart details
   const handleCartShow = () => {
@@ -36,10 +37,16 @@ const Header = () => {
             </li>
             <li>
               <a
+                onClick={() => setDarkMode(!darkMode)}
                 className="bg-primary/20 dark:bg-primary/[7%] rounded-lg backdrop-blur-[2px] p-1 inline-block"
                 href="#"
               >
-                <img src={Moon} width="24" height="24" alt="moon" />
+                <img
+                  src={darkMode ? Sun : Moon}
+                  width="24"
+                  height="24"
+                  alt="moon"
+                />
               </a>
             </li>
             <li>
@@ -51,7 +58,7 @@ const Header = () => {
                 <img src={Cart} width="24" height="24" alt="cart" />
                 {/* cart number add  */}
                 {cartData.length > 0 && (
-                  <span className="rounded-full absolute top-[-12px] left-[28px bg-[#12CF6F] text-white text-center p-[2px] w-[30px] h-[30px]">
+                  <span className="rounded-full absolute top-[-12px] left-[18px] bg-[#12CF6F] text-white text-center p-[2px] w-[30px] h-[30px]">
                     {cartData.length}
                   </span>
                 )}
