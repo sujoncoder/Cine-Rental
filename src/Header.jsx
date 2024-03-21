@@ -1,20 +1,24 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Moon from "./assets/icons/moon.svg";
 import Logo from "./assets/logo.svg";
 import Ring from "./assets/ring.svg";
 import Cart from "./assets/shopping-cart.svg";
 import CartDetails from "./cine/CartDetails";
+import { MovieContext } from "./context";
 
 const Header = () => {
   const [showDetails, setShowDetails] = useState(false);
+  const { cartData } = useContext(MovieContext);
+  console.log(cartData);
 
+  // handle show cart details
   const handleCartShow = () => {
     setShowDetails(true);
   };
   return (
     <>
-      {showDetails && <CartDetails />}
+      {showDetails && <CartDetails onClose={() => setShowDetails(false)} />}
       <header>
         <nav className="container flex items-center justify-between space-x-10 py-6">
           <a href="index.html">
@@ -45,6 +49,12 @@ const Header = () => {
                 href="#"
               >
                 <img src={Cart} width="24" height="24" alt="cart" />
+                {/* cart number add  */}
+                {cartData.length > 0 && (
+                  <span className="rounded-full absolute top-[-12px] left-[28px bg-[#12CF6F] text-white text-center p-[2px] w-[30px] h-[30px]">
+                    {cartData.length}
+                  </span>
+                )}
               </a>
             </li>
           </ul>
