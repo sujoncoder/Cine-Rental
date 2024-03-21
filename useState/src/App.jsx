@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "react-toastify/dist/ReactToastify.css";
 import Footer from "./Footer";
 import Header from "./Header";
 import SideBar from "./SideBar";
